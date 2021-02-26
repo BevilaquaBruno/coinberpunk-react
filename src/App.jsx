@@ -8,29 +8,24 @@ import "./public/css/main.css";
 //import "./public/css/menu.css";
 //import "./public/css/augmented-ui.min.css";
 
-import bitcoinImg from "./public/img/bitcoin.svg";
-import cardanoImg from "./public/img/cardano.svg";
-import dogecoinImg from "./public/img/dogecoin.svg";
-import ethereumImg from "./public/img/ethereum.svg";
-
 //import { jsonCoins } from "./coins";
 class App extends React.Component {
   pattern = [
     {
       name: "Bitcoin", id: "bitcoin",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "BTC", img: bitcoinImg
+      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "BTC"
     },
     {
       name: "Ethereum", id: "ethereum",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "ETH", img: ethereumImg
+      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "ETH"
     },
     {
       name: "Cardano", id: "cardano",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "ADA", img: cardanoImg
+      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "ADA"
     },
     {
       name: "Dogecoin", id: "dogecoin",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "DOGE", img: dogecoinImg
+      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "DOGE"
     }
   ]
   state = {
