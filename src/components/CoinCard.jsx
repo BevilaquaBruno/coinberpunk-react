@@ -17,7 +17,6 @@ class CoinCard extends Component {
   loadImage = (name) => {
     import("../public/img/"+name+"-img.svg")
       .then(image => {
-        console.log(image);
         this.setState({ src: image.default });
       })
   }
