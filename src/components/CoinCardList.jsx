@@ -7,9 +7,8 @@ class CoinCardList extends Component {
     return (
       <Fragment>
         {this.props.coins.map(coin => (
-          <div className="col-xs-12 col-sm-3 text-center">
+          <div key={coin.id} className="col-xs-12 col-sm-3 text-center">
             <CoinCard
-              key={coin.id}
               id={coin.id}
               brl={coin.brl}
               usd={coin.usd}
