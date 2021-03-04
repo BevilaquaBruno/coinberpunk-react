@@ -124,13 +124,4 @@ class MenuComponent extends React.Component {
   }
 }
 
-/*
-{this.state.coinImgs.map(img => {
-  console.log(img);
-  if (img.id === this.props.coinListAll[coin].id){
-    return img.image
-  }
-})}
-*/
-
 export default MenuComponent;
