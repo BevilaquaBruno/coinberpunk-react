@@ -1,8 +1,8 @@
 export const jsonCoins = {
 	"basic-attention-token": {
-        "id": "basic-attention-token",
-        "name": "Basic Attention Token",
-        "short": "BAT"
+		"id": "basic-attention-token",
+		"name": "Basic Attention Token",
+		"short": "BAT"
     },
 	"bitcoin": {
 		"id": "bitcoin",
@@ -48,5 +48,10 @@ export const jsonCoins = {
 		"id": "ripple",
 		"name": "Ripple",
 		"short": "XRP"
+	},
+	"webchain":{
+		"id": "webchain",
+		"name": "MintMe",
+		"short": "MINTME"
 	}
 };
