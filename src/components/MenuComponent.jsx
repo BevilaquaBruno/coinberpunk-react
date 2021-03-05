@@ -3,18 +3,10 @@ import React, { Fragment } from 'react';
 
 const beforePath = '../public/img/';
 const afterPath = '-img.svg';
+
 const images = import.meta.glob('../public/img/*-img.svg');
 
-/*import bitcoinImg from "../public/img/bitcoin-img.svg";
-import cardanoImg from "../public/img/cardano-img.svg";
-import dogecoinImg from "../public/img/dogecoin-img.svg";
-import ethereumImg from "../public/img/ethereum-img.svg";
-import rippleImg from "../public/img/ripple-img.svg";
-import basicAttentionTokenImg from "../public/img/basic-attention-token-img.svg";
-import chainlinkImg from "../public/img/chainlink-img.svg";
-import elrondErd2Img from "../public/img/elrond-erd-2-img.svg";
-import polkadotImg from "../public/img/polkadot-img.svg";
-import webchainImg from "../public/img/webchain-img.svg";*/
+import "../public/css/menu.css";
 
 class MenuComponent extends React.Component {
   state = {

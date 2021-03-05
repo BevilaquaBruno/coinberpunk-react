@@ -5,7 +5,6 @@ import CoinCardList from "./components/CoinCardList";
 
 import "./public/css/flexboxgrid.min.css";
 import "./public/css/main.css";
-import "./public/css/menu.css";
 import "./public/css/augmented-ui.min.css";
 
 import { jsonCoins } from "./coins";
