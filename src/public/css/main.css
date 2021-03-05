@@ -1,6 +1,6 @@
 @font-face {
   font-family: Cyber;
-  src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
+  src: url('../font/cyberpunk.otf');
   font-display: swap;
 }
 @media only screen and (max-width: 700px){
