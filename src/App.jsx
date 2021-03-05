@@ -50,11 +50,6 @@ class App extends React.Component {
       }),
     }))
   };
-  updateGMT = gmt => {
-    this.setState({
-      current_gmt: gmt
-    })
-  };
   getCurrentIds = () => {
     let currentIds = this.state.coins.map(coin => {
       return coin.id;
@@ -69,7 +64,7 @@ class App extends React.Component {
           this.updatecoin(data[coin.id.toLocaleLowerCase()], coin.name);
         });
         let dt = new Date(data[this.state.coins[0].id].last_updated_at * 1000);
-        this.updateGMT("GMT"+((dt.getHours() >= dt.getUTCHours() )? "+": "-")+(dt.getTimezoneOffset() / 60));
+        this.setState({ current_gmt: "GMT"+((dt.getHours() >= dt.getUTCHours() )? "+": "-")+(dt.getTimezoneOffset() / 60) })
       });
   }
   getLocalCoins = () => {
