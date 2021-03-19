@@ -32,6 +32,7 @@ class App extends React.Component {
     lang: (navigator.language != '' && navigator.language != null)?navigator.language:'pt-BR',
     current_gmt: '',
     coinList: jsonCoins,
+    updating_coin: false,
     //current: ['Bitcoin', 'Ethereum', 'Cardano', 'Dogecoin']
   }
   updatecoin = (data, name) => {
@@ -57,6 +58,7 @@ class App extends React.Component {
     return currentIds;
   };
   getData = () => {
+    this.setState({ updating_coin: true });
     fetch('https://api.coingecko.com/api/v3/simple/price?ids='+this.getCurrentIds()+'&vs_currencies=brl,usd&include_last_updated_at=true')
       .then(response => response.json())
       .then(data => {
@@ -64,7 +66,7 @@ class App extends React.Component {
           this.updatecoin(data[coin.id.toLocaleLowerCase()], coin.name);
         });
         let dt = new Date(data[this.state.coins[0].id].last_updated_at * 1000);
-        this.setState({ current_gmt: "GMT"+((dt.getHours() >= dt.getUTCHours() )? "+": "-")+(dt.getTimezoneOffset() / 60) })
+        this.setState({ updating_coin: false, current_gmt: "GMT"+((dt.getHours() >= dt.getUTCHours() )? "+": "-")+(dt.getTimezoneOffset() / 60) });
       });
   }
   getLocalCoins = () => {
@@ -79,6 +81,9 @@ class App extends React.Component {
     localStorage.setItem('coins', JSON.stringify(this.state.coins));
   }
   changeCoin = (id) => {
+    if (this.state.updating_coin === true) {
+      return false;
+    }
     let isVisible = false;
     this.state.coins.map(coin => {
       if (coin.id === id) {
