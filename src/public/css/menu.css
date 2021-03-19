@@ -78,3 +78,11 @@ ul > li:not(:first-child):hover > div > img{
   vertical-align: middle;
   transition: all .2s ease-in-out;
 }
+
+.button-img {
+  width: 50px;
+  cursor: pointer;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}

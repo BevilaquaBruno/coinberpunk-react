@@ -8,6 +8,8 @@ const images = import.meta.glob('../public/img/*-img.svg');
 
 import "../public/css/menu.css";
 
+import menuImg from '../public/img/menu.svg';
+
 class MenuComponent extends React.Component {
   state = {
     slide_wrp: "side-menu-wrapper",
@@ -101,7 +103,7 @@ class MenuComponent extends React.Component {
     return (
       <Fragment>
         <div className="menu-overlay"></div>
-        <a onClick={this.menuOpenHandle} href="#" className="menu-open">Open Menu</a>
+        <img onClick={this.menuOpenHandle} className="button-img" src={menuImg} />
         <div className="side-menu-wrapper">
           <div className="side-menu-child" data-augmented-ui="border tl-2-clip-x l-clip-y bl-2-clip-x">
             <a onClick={this.menuCloseHandle} href="#" className="menu-close">×</a>
