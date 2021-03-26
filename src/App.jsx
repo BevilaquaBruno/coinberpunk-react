@@ -100,7 +100,7 @@ class App extends React.Component {
       this.setState({
         coins: [...this.state.coins, newCoin]
       });
-    }else if(isVisible === true){
+    }else if(isVisible === true && this.state.coins.length > 4){
       this.setState({
         coins:[
           ...this.state.coins.filter(coin => {
