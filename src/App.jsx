@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import MenuComponent from "./components/MenuComponent";
 import CoinCardList from "./components/CoinCardList";
@@ -33,6 +34,7 @@ class App extends React.Component {
     current_gmt: '',
     coinList: jsonCoins,
     updating_coin: false,
+    title: 'Coinberpunk!!',
     //current: ['Bitcoin', 'Ethereum', 'Cardano', 'Dogecoin']
   }
   updatecoin = (data, name) => {
@@ -108,8 +110,32 @@ class App extends React.Component {
       })
     }
   }
+  updateTitle = () => {
+    let currentTitle = document.title.split(':');
+    let isThePrevious = false;
+    this.state.coins.every((coin, index) => {
+      console.log(index, coin.short, currentTitle[0]);
+      if(index === 0 && this.state.title == 'Coinberpunk!!'){
+        this.setState({ title: coin.short+': '+coin.brl });
+        return false;
+      }
+      if (isThePrevious === true){
+        this.setState({ title: coin.short+': '+coin.brl });
+        return false;
+      }else if(coin.short === currentTitle[0]){
+        if(index === (this.state.coins.length - 1)){
+          this.setState({ title: this.state.coins[0].short+': '+this.state.coins[0].brl })
+          return false;
+        }else
+          isThePrevious = true;
+          return true;
+      }
+      return true;
+    })
+  }
   startIntervals = () => {
     setInterval(this.getData, 7000);
+    setInterval(this.updateTitle, 3000);
   }
 
   componentDidMount(){
@@ -120,6 +146,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
+      <Helmet>
+        <title>{this.state.title}</title>
+      </Helmet>
         <h2 className="text-center">Coinberpunk (Update every 15s | {this.state.current_gmt})</h2>
         <h5 className="text-center">Powered by <a target="_blank" href="https://www.coingecko.com">CoinGecko API</a> </h5>
         <MenuComponent coinListAll={this.state.coinList} changeCoinHandle={this.changeCoin} />
