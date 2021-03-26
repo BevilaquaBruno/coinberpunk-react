@@ -114,7 +114,6 @@ class App extends React.Component {
     let currentTitle = document.title.split(':');
     let isThePrevious = false;
     this.state.coins.every((coin, index) => {
-      console.log(index, coin.short, currentTitle[0]);
       if(index === 0 && this.state.title == 'Coinberpunk!!'){
         this.setState({ title: coin.short+': '+coin.brl });
         return false;
