@@ -12,7 +12,7 @@ class CoinCardList extends Component {
               id={coin.id}
               brl={coin.brl}
               usd={coin.usd}
-              last_update_at={coin.last_update_at}
+              last_updated_at={coin.last_updated_at}
               name={coin.name}
               short={coin.short}
             />

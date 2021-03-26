@@ -32,7 +32,7 @@ class CoinCard extends Component {
                 <div className="col-sm-12">
                   {this.props.brl}{(this.props.usd!=""?" | "+this.props.usd:"") }
                   <br />
-                  {this.props.last_update_at}
+                  {this.props.last_updated_at}
                 </div>
               </div>
             </div>

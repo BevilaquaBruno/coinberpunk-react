@@ -10,32 +10,34 @@ import "./public/css/augmented-ui.min.css";
 
 import { jsonCoins } from "./coins";
 class App extends React.Component {
-  pattern = [
-    {
-      name: "Bitcoin", id: "bitcoin",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "BTC"
-    },
-    {
-      name: "Ethereum", id: "ethereum",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "ETH"
-    },
-    {
-      name: "Cardano", id: "cardano",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "ADA"
-    },
-    {
-      name: "Dogecoin", id: "dogecoin",
-      brl: "Retrieving data from Véio da Havan...", usd: "", last_update_at: "", short: "DOGE"
+  constructor(props){
+    super(props)
+    this.state = {
+      coins: [
+        {
+          name: "Bitcoin", id: "bitcoin",
+          brl: "Retrieving data from Véio da Havan...", usd: "", last_updated_at: "", short: "BTC"
+        },
+        {
+          name: "Ethereum", id: "ethereum",
+          brl: "Retrieving data from Véio da Havan...", usd: "", last_updated_at: "", short: "ETH"
+        },
+        {
+          name: "Cardano", id: "cardano",
+          brl: "Retrieving data from Véio da Havan...", usd: "", last_updated_at: "", short: "ADA"
+        },
+        {
+          name: "Dogecoin", id: "dogecoin",
+          brl: "Retrieving data from Véio da Havan...", usd: "", last_updated_at: "", short: "DOGE"
+        }
+      ],
+      lang: (navigator.language != '' && navigator.language != null)?navigator.language:'pt-BR',
+      current_gmt: '',
+      coinList: jsonCoins,
+      updating_coin: false,
+      title: 'Coinberpunk!!',
+      //current: ['Bitcoin', 'Ethereum', 'Cardano', 'Dogecoin']
     }
-  ]
-  state = {
-    coins: [...this.pattern],
-    lang: (navigator.language != '' && navigator.language != null)?navigator.language:'pt-BR',
-    current_gmt: '',
-    coinList: jsonCoins,
-    updating_coin: false,
-    title: 'Coinberpunk!!',
-    //current: ['Bitcoin', 'Ethereum', 'Cardano', 'Dogecoin']
   }
   updatecoin = (data, name) => {
     this.setState(prevState => ({
@@ -46,7 +48,7 @@ class App extends React.Component {
             ...coin,
             brl: 'R$ '+data.brl.toLocaleString(this.state.lang),
             usd: '$ '+data.usd.toLocaleString(this.state.lang),
-            last_update_at: dt.toLocaleString(this.state.lang)
+            last_updated_at: dt.toLocaleString(this.state.lang)
           }
         }
         return coin
@@ -65,14 +67,15 @@ class App extends React.Component {
       .then(response => response.json())
       .then(data => {
         this.state.coins.map(coin => {
-          this.updatecoin(data[coin.id.toLocaleLowerCase()], coin.name);
+          if (data[coin.id.toLocaleLowerCase()] !== undefined)
+            this.updatecoin(data[coin.id.toLocaleLowerCase()], coin.name);
         });
         let dt = new Date(data[this.state.coins[0].id].last_updated_at * 1000);
         this.setState({ updating_coin: false, current_gmt: "GMT"+((dt.getHours() >= dt.getUTCHours() )? "+": "-")+(dt.getTimezoneOffset() / 60) });
       });
   }
   getLocalCoins = () => {
-    coins = localStorage.getItem('coins');
+    let coins = JSON.parse(localStorage.getItem('coins'));
     if(coins){
       this.setState({
         coins: coins
@@ -137,7 +140,12 @@ class App extends React.Component {
     setInterval(this.updateTitle, 3000);
   }
 
+  componentDidUpdate(){
+    this.setLocalCoins();
+  }
+
   componentDidMount(){
+    this.getLocalCoins();
     this.getData();
     this.startIntervals();
   }
