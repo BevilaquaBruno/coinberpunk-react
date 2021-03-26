@@ -148,7 +148,7 @@ class App extends React.Component {
       <Helmet>
         <title>{this.state.title}</title>
       </Helmet>
-        <h2 className="text-center">Coinberpunk (Update every 15s | {this.state.current_gmt})</h2>
+        <h2 className="text-center">Coinberpunk (Update every 7s | {this.state.current_gmt})</h2>
         <h5 className="text-center">Powered by <a target="_blank" href="https://www.coingecko.com">CoinGecko API</a> </h5>
         <MenuComponent coinListAll={this.state.coinList} changeCoinHandle={this.changeCoin} />
         <div className="row">
