@@ -149,7 +149,7 @@ class App extends React.Component {
         <title>{this.state.title}</title>
       </Helmet>
         <h2 className="text-center">Coinberpunk (Update every 7s | {this.state.current_gmt})</h2>
-        <h5 className="text-center">Powered by <a target="_blank" href="https://www.coingecko.com">CoinGecko API</a> </h5>
+        <h5 className="text-center">Powered with <a target="_blank" href="https://www.github.com/bevilaquabruno">♥</a> and <a target="_blank" href="https://www.coingecko.com">CoinGecko API</a> <br /> Please, <a target="_blank" href="https://www.buymeacoffee.com/bevilaqua">Buy me a coffee</a></h5>
         <MenuComponent coinListAll={this.state.coinList} changeCoinHandle={this.changeCoin} />
         <div className="row">
           <CoinCardList coins={this.state.coins} />
