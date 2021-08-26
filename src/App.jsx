@@ -35,8 +35,7 @@ class App extends React.Component {
       current_gmt: '',
       coinList: jsonCoins,
       updating_coin: false,
-      title: 'Coinberpunk!!',
-      //current: ['Bitcoin', 'Ethereum', 'Cardano', 'Dogecoin']
+      title: 'Coinberpunk!!'
     }
   }
   updatecoin = (data, name) => {
@@ -130,7 +129,7 @@ class App extends React.Component {
           return false;
         }else
           isThePrevious = true;
-          return true;
+        return true;
       }
       return true;
     })
