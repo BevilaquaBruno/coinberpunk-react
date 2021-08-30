@@ -15,7 +15,7 @@
 
 # Do you want more options?
 
-### If you want a new criptocurrency in coinberpunk just open an [issue](https://github.com/BevilaquaBruno/coinberpunk-react/issues) and i will update as soon as possible
+#### If you want a new criptocurrency in coinberpunk just open an [issue](https://github.com/BevilaquaBruno/coinberpunk-react/issues) and i will update as soon as possible
 
 ```
      ╔══════════════════╗
@@ -34,4 +34,4 @@
 ```
 
 # Do you want to create your own?
-### Just fork this project.
+#### Just fork this project.
